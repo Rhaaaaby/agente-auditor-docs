@@ -1,0 +1,7 @@
+pdfplumber>=0.11.9
+Pillow>=9.1
+pypdfium2>=4.18.0
+pdfminer.six>=20220524
+flask
+gunicorn
+werkzeug
