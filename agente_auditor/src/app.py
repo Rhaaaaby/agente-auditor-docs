@@ -9,8 +9,8 @@ import os
 import json
 from flask import Flask, request, jsonify, render_template
 from werkzeug.utils import secure_filename
-from agent.auditor import AgenteAuditor
-from models.contratos import EntradaRequest
+from .agent.auditor import AgenteAuditor
+from .models.contratos import EntradaRequest
 
 app = Flask(__name__)
 
