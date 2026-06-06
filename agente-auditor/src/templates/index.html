@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agente Auditor de Documentos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Agente Auditor</h1>
+            <p>Análise inteligente de estrutura, referências e ortografia para trabalhos acadêmicos.</p>
+        </header>
+
+        <main>
+            <!-- File Upload Zone -->
+            <div class="upload-zone" id="upload-zone">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.36 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                </svg>
+                <div class="upload-text">Arraste seu arquivo PDF aqui</div>
+                <div class="upload-subtext">ou clique para selecionar um documento</div>
+                <input type="file" id="file-input" accept="application/pdf">
+            </div>
+
+            <!-- File Info Display -->
+            <div class="file-info" id="file-info">
+                <div class="file-name-wrapper">
+                    <svg class="file-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                    </svg>
+                    <span class="file-name" id="file-name">documento.pdf</span>
+                </div>
+                <button class="remove-file" id="remove-file" title="Remover Arquivo">&times;</button>
+            </div>
+
+            <!-- Categories Selection -->
+            <div class="categories-section">
+                <h3>Critérios de Análise</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-card selected">
+                        <input type="checkbox" id="cat-estrutura" name="categorias" value="estrutura" checked>
+                        <label for="cat-estrutura">Estrutura</label>
+                    </div>
+                    <div class="checkbox-card selected">
+                        <input type="checkbox" id="cat-referencias" name="categorias" value="referencias" checked>
+                        <label for="cat-referencias">Referências</label>
+                    </div>
+                    <div class="checkbox-card selected">
+                        <input type="checkbox" id="cat-ortografia" name="categorias" value="ortografia" checked>
+                        <label for="cat-ortografia">Ortografia</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <button class="btn-primary" id="submit-btn" disabled>Auditar Documento</button>
+
+            <!-- Loading State -->
+            <div class="loader-container" id="loader-container">
+                <div class="loader"></div>
+                <p>Analisando documento, aguarde...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="results-section">
+                <div id="status-banner" class="status-banner"></div>
+                <div class="results-grid" id="results-grid">
+                    <!-- Results will be injected here via JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
